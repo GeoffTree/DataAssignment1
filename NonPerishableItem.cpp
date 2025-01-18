@@ -7,6 +7,10 @@
 #include <iostream>
 using namespace std;
 
+/*First attempt at NonPerishableItem
+ *Not significantly different from Perishable just subtle things with new variable being int not string
+ *
+ */
 NonPerishableItem::NonPerishableItem(int id, const string &name, int quantity, double price, int warrantyPeriod)
     : Item(id, name, quantity, price), warrantyPeriod(warrantyPeriod) {}
 

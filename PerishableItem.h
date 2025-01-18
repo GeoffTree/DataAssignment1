@@ -17,6 +17,7 @@ class PerishableItem : public Item {
     public:
         //Constructor
         PerishableItem(int id, const string& name, int quantity, double price, const string& expirationDate);
+            //const to prevent modification and 'string&' to prevent a copy of string being made
 
         //Getter
         const string& getExpirationDate() const;
