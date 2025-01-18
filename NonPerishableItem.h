@@ -4,11 +4,25 @@
 
 #ifndef NONPERISHABLEITEM_H
 #define NONPERISHABLEITEM_H
+#include "Item.h"
+using namespace std;
 
+//Declarations
+class NonPerishableItem : public Item {
+    int warrantyPeriod;
 
+    public:
+        //Constructor
+        NonPerishableItem(int id, const string& name, int quantity, double price, int warrantyPeriod);
 
-class NonPerishableItem {
+        //Getter
+        int getWarrantyPeriod() const;
 
+        //Setter
+        void setWarrantyPeriod(int period);
+
+        //Display
+        void display() const override;
 };
 
 

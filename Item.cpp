@@ -15,23 +15,23 @@ using namespace std;
  *const additions optimize the code for the compiler indicating that some values are immutable
  */
 
-//Constructor
+//Constructor implementation
 Item::Item(int id, const string& name, int quantity, double price)
             : id(id), name(name), quantity(quantity), price(price) {}
 
-    // Getters
+    // Getters implementation
     int Item::getId() const { return id; }
     const string& Item::getName() const{ return name; }
     int Item::getQuantity() const { return quantity; }
     double Item::getPrice() const { return price; }
 
-    // Setters
+    // Setters implementation
     void Item::setId(int id) { this->id = id; }
     void Item::setName(const string& name) { this->name = name; }
     void Item::setQuantity(int quantity) { this->quantity = quantity; }
     void Item::setPrice(double price) { this->price = price; }
 
-    // Display
+    // Display implementation
     void Item::display() const {
             cout << "Item id: " << id << endl;
             cout << "Item name: " << name << endl;

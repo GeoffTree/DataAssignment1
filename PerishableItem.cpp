@@ -14,7 +14,7 @@ using namespace std;
  *overrode display and added a default destructor to clean up resources
  */
 
-//Constructor
+//Constructor implementation
 PerishableItem::PerishableItem(int id, const string &name, int quantity, double price, const string &expirationDate)
     : Item(id, name, quantity, price), expirationDate(expirationDate) {}
 
@@ -23,12 +23,12 @@ PerishableItem::PerishableItem(int id, const string &name, int quantity, double 
         return expirationDate;
     }
 
-    //Setter
+    //Setter implementation
     void PerishableItem::setExpirationDate(const string &expirationDate) {
         this->expirationDate = expirationDate;
     }
 
-    //Display Override
+    //Display override implementation
     void PerishableItem::display() const{
         Item::display();
         cout << "Expiration Date: " << expirationDate << endl;
