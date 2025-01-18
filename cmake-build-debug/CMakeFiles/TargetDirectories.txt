@@ -1,0 +1,3 @@
+/cygdrive/c/Users/geoff/projects/DataProject1/cmake-build-debug/CMakeFiles/DataProject1.dir
+/cygdrive/c/Users/geoff/projects/DataProject1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/cygdrive/c/Users/geoff/projects/DataProject1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
