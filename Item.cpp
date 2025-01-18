@@ -15,6 +15,7 @@ using namespace std;
  *const additions optimize the code for the compiler indicating that some values are immutable
  */
 
+//Constructor
 Item::Item(int id, const string& name, int quantity, double price)
             : id(id), name(name), quantity(quantity), price(price) {}
 
@@ -37,4 +38,5 @@ Item::Item(int id, const string& name, int quantity, double price)
             cout << "Quantity: " << quantity << endl;
             cout << "Price: $" << price << endl;
         }
+
 ;

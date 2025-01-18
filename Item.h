@@ -8,33 +8,35 @@
 #include <string>
 using namespace std;
 
-// base item class
+//Base Item Class Declarations
 class Item {
-//class attributes private
-private:
-    int id;
-    string name;
-    int quantity;
-    double price;
 
-public:
-    // Constructor
-    Item(int id, const string& name, int quantity, double price);
+    //Class Attributes
+    private:
+        int id;
+        string name;
+        int quantity;
+        double price;
 
-    // Getters
-    int getId() const;
-    const string& getName() const;
-    int getQuantity() const;
-    double getPrice() const;
+    public:
+        // Constructor
+        Item(int id, const string& name, int quantity, double price);
 
-    // Setters
-    void setId(int id);
-    void setName(const string& name);
-    void setQuantity(int quantity);
-    void setPrice(double price);
+        // Getters
+        int getId() const;
+        const string& getName() const;
+        int getQuantity() const;
+        double getPrice() const;
 
-    // Display
-    void display() const;
+        // Setters
+        void setId(int id);
+        void setName(const string& name);
+        void setQuantity(int quantity);
+        void setPrice(double price);
+
+        // Display
+        virtual void display() const;
+        virtual ~Item() = default;
 };
 
 
