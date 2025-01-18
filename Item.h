@@ -19,22 +19,22 @@ private:
 
 public:
     // Constructor
-    Item(int id, string name, int quantity, double price);
+    Item(int id, const string& name, int quantity, double price);
 
     // Getters
-    int getId();
-    string getName();
-    int getQuantity();
-    double getPrice();
+    int getId() const;
+    const string& getName() const;
+    int getQuantity() const;
+    double getPrice() const;
 
     // Setters
     void setId(int id);
-    void setName(string name);
+    void setName(const string& name);
     void setQuantity(int quantity);
     void setPrice(double price);
 
     // Display
-    void display();
+    void display() const;
 };
 
 
