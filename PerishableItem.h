@@ -7,6 +7,8 @@
 #include "Item.h"
 using namespace std;
 
+//Destructor inherited
+
 //Class Declarations
 class PerishableItem : public Item {
 

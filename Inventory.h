@@ -16,6 +16,7 @@ using namespace std;
  *unique_ptr is a smart pointer that covers the lifetime of a dynamically allocated object
  *automatically deletes object when no longer needed freeing memory
  *
+ *Inventory destructor implemented in header file
  */
 
 //Declarations

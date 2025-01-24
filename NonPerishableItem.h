@@ -7,6 +7,8 @@
 #include "Item.h"
 using namespace std;
 
+//Destructor inherited
+
 //Declarations
 class NonPerishableItem : public Item {
     int warrantyPeriod;

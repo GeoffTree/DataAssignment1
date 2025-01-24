@@ -9,6 +9,16 @@
 #include "PerishableItem.h"
 using namespace std;
 
+/*Took longer to build Inventory class as had to understand nuances of dynamic memory allocation
+ *and reading and writing to/from files.
+ *
+ * With the inventory being to backbone of the program functionality wanted to ensure
+ * methods were clear and ready to be tested after building the menu.
+ *
+ *Inventory destructor implemented in header file
+ */
+
+
 //Constructor
 Inventory::Inventory(int capacity): capacity(capacity), itemCount(0) {}
 
@@ -45,8 +55,9 @@ void Inventory::displayItems() const {
     }
     for (const auto& item : items) {
         item->display();
-        cout << "End of list." << endl;
+        cout << "\n";
     }
+    cout << "End of list." << endl;
 }
 
 // Save - throws exception if save fails

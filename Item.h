@@ -8,6 +8,8 @@
 #include <string>
 using namespace std;
 
+//Destructor implemented in header file
+
 //Base Item Class Declarations
 class Item {
 
@@ -36,6 +38,8 @@ class Item {
 
         // Display
         virtual void display() const;
+
+        //Destructor
         virtual ~Item() = default;
 };
 
