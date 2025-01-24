@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include <memory>
 #include "Item.h"
 #include "Inventory.h"
@@ -6,6 +7,10 @@
 #include "NonPerishableItem.h"
 
 using namespace std;
+
+/*Add Item uses make_unique to assign a unique_ptr to newly constructed object
+ *deletes and deallocates the object and associated memory when pointer out of scope
+ */
 
 void displayMenu() {
     cout << "\nInventory Management System\n";
@@ -23,6 +28,8 @@ int main() {
     Inventory inventory(100);
     int option;
 
+    //do-while not exit option, displays menu and runs functionality for each option
+    //on exit return 0
     do {
         displayMenu();
         cin >> option;
@@ -37,11 +44,20 @@ int main() {
 
                 //Get user input for object creation
                 cout << "Enter 1 if Item is Perishable or Enter 2 for Non-Perishable\n";
-                cin >> itemType;
+                while (!(cin >> itemType) || (itemType != 1 && itemType != 2)) {
+                    cout << "Invalid option. Enter 1 if Item is Perishable or Enter 2 for Non-Perishable\n";
+                    cin.clear();
+                    //clears unwanted characters from buffer
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
 
                 cout << "Enter ID: ";
                 int id;
-                cin >> id;
+                while (!(cin >> id)) {
+                    cout << "Invalid Id. Enter Id: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
 
                 cout << "Enter Name: ";
                 string name;
@@ -49,11 +65,19 @@ int main() {
 
                 cout << "Enter Price: ";
                 double price;
-                cin >> price;
+                while (!(cin >> price)) {
+                    cout << "Invalid Price. Enter Price: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
 
                 cout << "Quantity: ";
                 int quantity;
-                cin >> quantity;
+                while (!(cin >> quantity)) {
+                    cout << "Invalid Quantity. Enter Quantity: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
 
                 //expiration and warranty period attribute if/else statement
                 if (itemType == 1) {
@@ -65,7 +89,11 @@ int main() {
                 else if (itemType == 2) {
                     cout << "Enter Warranty Period (In Months): ";
                     int warrantyPeriod;
-                    cin >> warrantyPeriod;
+                    while (!(cin >> warrantyPeriod)) {
+                        cout << "Invalid Warranty Period. Enter Warranty Period: ";
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
                     inventory.addItem(make_unique<NonPerishableItem>(id, name, quantity, price, warrantyPeriod));
                 }
                 else {
@@ -139,6 +167,8 @@ int main() {
 
             //base case
             default:
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout << "Invalid Input\n";
                 break;
         }

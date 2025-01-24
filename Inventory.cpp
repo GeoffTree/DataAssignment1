@@ -24,6 +24,10 @@ Inventory::Inventory(int capacity): capacity(capacity), itemCount(0) {}
 
 //Add item - throws error if at capacity
 void Inventory::addItem(unique_ptr<Item> item) {
+    if (!uniqueId(item->getId())) {
+        throw invalid_argument("Item must have unique Id");
+    }
+
     if (itemCount >= capacity) {
         throw overflow_error("Inventory is currently full. Items cannot be added!");
             //with <stdexcept> indicates arithmetic overflow
@@ -123,4 +127,15 @@ void Inventory::loadFromFile(const string& filename) {
         }
     }
 }
+
+//checks to ensure id is unique with auto iterator
+bool Inventory::uniqueId(int id) const {
+    for (const auto& item : items) {
+        if (item->getId() == id) {
+            return false;
+        }
+    }
+    return true;
+}
+
 

@@ -49,10 +49,14 @@ class Inventory {
     //Load inventory to file
     void loadFromFile(const string& filename); //no const after as modifies this object
         //const to ensure name does not change
-
-    //Destructor
+//Destructor
     ~Inventory() = default;
+
+    //Id uniqueness checker - private as is an internal helper function
+    private:
+        bool uniqueId(int id) const;
 };
+
 
 
 
