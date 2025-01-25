@@ -51,17 +51,26 @@ int main() {
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
 
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
                 cout << "Enter ID: ";
                 int id;
-                while (!(cin >> id)) {
+                while (!(cin >> id) || !inventory.uniqueId(id)){
                     cout << "Invalid Id. Enter Id: ";
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
 
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
                 cout << "Enter Name: ";
                 string name;
                 cin >> name;
+
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
                 cout << "Enter Price: ";
                 double price;
@@ -71,13 +80,19 @@ int main() {
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
 
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
                 cout << "Quantity: ";
                 int quantity;
-                while (!(cin >> quantity)) {
+                while (!(cin >> quantity) || quantity < 0) {
                     cout << "Invalid Quantity. Enter Quantity: ";
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
+
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
                 //expiration and warranty period attribute if/else statement
                 if (itemType == 1) {

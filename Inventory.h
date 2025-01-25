@@ -52,9 +52,8 @@ class Inventory {
 //Destructor
     ~Inventory() = default;
 
-    //Id uniqueness checker - private as is an internal helper function
-    private:
-        bool uniqueId(int id) const;
+    //Id uniqueness checker
+    bool uniqueId(int id) const;
 };
 
 
