@@ -13,8 +13,7 @@ using namespace std;
 class PerishableItem : public Item {
 
     //Class Attributes
-    private:
-        string expirationDate;
+    string expirationDate;
 
     public:
         //Constructor
