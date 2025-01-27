@@ -4,7 +4,6 @@
 
 #include "Inventory.h"
 #include <iostream>
-
 #include "NonPerishableItem.h"
 #include "PerishableItem.h"
 using namespace std;
@@ -18,7 +17,6 @@ using namespace std;
  *Inventory destructor implemented in header file
  */
 
-
 //Constructor
 Inventory::Inventory(int capacity): capacity(capacity), itemCount(0) {}
 
@@ -30,7 +28,7 @@ void Inventory::addItem(unique_ptr<Item> item) {
 
     if (itemCount >= capacity) {
         throw overflow_error("Inventory is currently full. Items cannot be added!");
-            //with <stdexcept> indicates arithmetic overflow
+            //indicates arithmetic overflow
     }
     items.push_back(move(item));
         //push_back appends a new element to end of vector
@@ -40,7 +38,7 @@ void Inventory::addItem(unique_ptr<Item> item) {
 
 //Remove item by id - auto iterator pointing at first vector element
 //loop checks getId() to find matching id for deletion
-void Inventory::removeItem(int id) {
+void Inventory::removeItem(const int id) {
     for (auto it = items.begin(); it != items.end(); ++it) {
         if ((*it)->getId() == id) {
             items.erase(it); //releases resources
@@ -103,23 +101,23 @@ void Inventory::loadFromFile(const string& filename) {
     inFile >> capacity >> itemCount;
     for (int i = 0; i < itemCount; ++i) {
         string type;
-        int id, quanity;
+        int id, quantity;
         double price;
         string name;
 
-        inFile >> type >> id >>name >> quanity >> price;
+        inFile >> type >> id >>name >> quantity >> price;
 
             //reads type to decide which attribute and type of item (perishable or non) to create
             //make_unique creates a new smart pointer
         if (type == typeid(PerishableItem).name()) {
             string expirationDate;
             inFile >> expirationDate;
-            items.push_back(make_unique<PerishableItem>(id, name, quanity, price, expirationDate));
+            items.push_back(make_unique<PerishableItem>(id, name, quantity, price, expirationDate));
 
         } else if (type == typeid(NonPerishableItem).name()) {
             int warrantyPeriod;
             inFile >> warrantyPeriod;
-            items.push_back(make_unique<NonPerishableItem>(id, name, quanity, price, warrantyPeriod));
+            items.push_back(make_unique<NonPerishableItem>(id, name, quantity, price, warrantyPeriod));
         }
 
         else {

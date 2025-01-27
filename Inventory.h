@@ -9,7 +9,6 @@
 #include <vector>
 #include <memory>
 #include <fstream>
-#include <stdexcept>
 using namespace std;
 
 /*Included <memory> as while learning about dynamic memory allocation discovered unique_ptr
@@ -55,8 +54,5 @@ class Inventory {
     //Id uniqueness checker
     bool uniqueId(int id) const;
 };
-
-
-
 
 #endif //INVENTORY_H

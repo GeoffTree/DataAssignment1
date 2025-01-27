@@ -15,7 +15,7 @@ using namespace std;
 void displayMenu();
 void clearBuffer();
 bool validDate(const string& date);
-void addItem(Inventory& inventory);
+void menuAddItem(Inventory& inventory);
 void removeItem(Inventory& inventory);
 void saveToFile(const Inventory& inventory);
 void loadFromFile(Inventory& inventory);
@@ -26,15 +26,17 @@ int main() {
     Inventory inventory(100);
     int option;
 
-    //do-while exit option not selected, displays menu and runs functionality for each option
+    //do-while exit option not selected, displays menu and runs functionality for user selection
     //on exit return 0
     do {
         displayMenu();
         cin >> option;
+
+        //user input handler - menu functionality skeleton
         switch (option) {
             //Add an Item
             case 1: {
-                addItem(inventory);
+                menuAddItem(inventory);
                 break;
             }
             //Remove an Item
@@ -68,69 +70,71 @@ int main() {
                 cout << "Invalid Input\n";
                 break;
         }
-    }while (option != 6);
+    }
+    while (option != 6);
     return 0;
 }
 
 //Logic implementations
-void addItem(Inventory& inventory) {
+void menuAddItem(Inventory& inventory) {
     // Initialize itemType
     int itemType;
     clearBuffer();
 
     //Get user input for object creation
-    cout << "Enter 1 if Item is Perishable or Enter 2 for Non-Perishable\n";
+    //Item Type
+    cout << "Enter 1 if Item is Perishable or Enter 2 for Non-Perishable: \n";
     while (!(cin >> itemType) && (itemType != 1 && itemType != 2)) {
-        cout << "Invalid option. Enter 1 if Item is Perishable or Enter 2 for Non-Perishable\n";
+        cout << "Invalid option. Enter 1 if Item is Perishable or Enter 2 for Non-Perishable: \n";
         clearBuffer();
     }
-
     clearBuffer();
 
+    //ID creation
     cout << "Enter ID: ";
     int id;
     while (!(cin >> id) && !inventory.uniqueId(id)){
         cout << "Invalid Id. Enter Id: ";
         clearBuffer();
     }
-
     clearBuffer();
 
+    //Name
     cout << "Enter Name: ";
     string name;
     cin >> name;
-
     clearBuffer();
 
+    //Price
     cout << "Enter Price: ";
     double price;
     while (!(cin >> price)) {
         cout << "Invalid Price. Enter Price: ";
         clearBuffer();
     }
-
     clearBuffer();
 
+    //Quantity
     cout << "Quantity: ";
     int quantity;
     while (!(cin >> quantity) && quantity < 0) {
         cout << "Invalid Quantity. Enter Quantity: ";
         clearBuffer();
     }
-
     clearBuffer();
 
     //expiration and warranty period attribute if/else statement
+    //Perishable
     if (itemType == 1) {
         cout << "Enter Expiration Date (YYYY-MM-DD): ";
         string expirationDate;
-
         while(!(cin >> expirationDate && validDate(expirationDate))) {
             cout << "Invalid Date. Enter Expiration Date (YYYY-MM-DD): ";
             clearBuffer();
         };
         inventory.addItem(make_unique<PerishableItem>(id, name, quantity, price, expirationDate));
     }
+    //NonPerishable
     else if (itemType == 2) {
         cout << "Enter Warranty Period (In Months): ";
         int warrantyPeriod;
